@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import MyComponent from './components/MyComponent';
+import Food from './components/Food';
+import Wrapper from './components/Wrapper';
+import Alert from './components/Alert';
+
+const food = ['Pizza', 'Hamburger', 'Coke'];
+
+const App = () => {
+  const [inputFromChild, setInputFromChild] = useState('');
+  const [clicked, setIsClicked] = useState(false);
+
+  const showP = () => {
+    setIsClicked(!clicked)
+  
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <MyComponent title="it works" />
+      <Food food={food} />
+      <Alert
+        inputFromChild={inputFromChild}
+        setInputFromChild={setInputFromChild}
+        setIsClicked={setIsClicked}
+        clicked={clicked}
+        showP={showP}
+      />
+      {clicked && <p> You typed: {inputFromChild}</p>}
+    </Wrapper>
   );
-}
+};
 
 export default App;
