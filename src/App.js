@@ -20,7 +20,6 @@ const App = () => {
       <MyComponent title="it works" />
       <Food food={food} />
       <Alert
-        inputFromChild={inputFromChild}
         setInputFromChild={setInputFromChild}
         setIsClicked={setIsClicked}
         clicked={clicked}
